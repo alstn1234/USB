@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable-v24/edge2.xml" value="0.302" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/edge.xml" value="0.327" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_chat_bubble_24.xml" value="0.2075" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_dashboard_24.xml" value="0.2075" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_error_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_person_outline_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_launcher_background.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_outline_chat_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_outline_dashboard_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_outline_home_24.xml" value="0.2075" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_outline_notifications_none_24.xml" value="0.182" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_outline_person_outline_24.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_seoul_background.xml" value="0.3275" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/icon_select_color.xml" value="0.2075" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/activity_home.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_board.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_chat.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_mypage.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/pragment_home.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/layout/uni_item.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/menu/bottom_nav.xml" value="0.36614583333333334" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/mipmap-anydpi-v26/123123.png.xml" value="0.1955" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1955" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1955" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/mipmap-anydpi-v26/ic_seoul.xml" value="0.1955" />
+        <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/mipmap-anydpi-v26/ic_seoul_round.xml" value="0.1955" />
+        <entry key="..\:/Users/alstn/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.36614583333333334" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>
