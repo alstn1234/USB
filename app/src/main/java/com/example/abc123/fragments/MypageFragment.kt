@@ -1,4 +1,4 @@
-package com.example.abc123
+package com.example.abc123.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,10 +15,17 @@ class MypageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val binding = FragmentMypageBinding.inflate(inflater, container, false)
 
         mBinding = binding
 
         return mBinding?.root
     }
+
+    override fun onDestroyView() {
+        mBinding = null
+        super.onDestroyView()
+    }
+
 }

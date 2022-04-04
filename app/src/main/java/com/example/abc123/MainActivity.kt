@@ -12,21 +12,22 @@ import com.example.abc123.databinding.FragmentBoardBinding
 import com.example.abc123.fragments.BoardFragment
 import java.util.zip.Inflater
 
-class SubActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
-    private lateinit var bbinding: FragmentBoardBinding
+    private lateinit var  mBinding : ActivityMainBinding
+    private lateinit var binding: MainActivity
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        mBinding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(mBinding.root)
 
-        bbinding = FragmentBoardBinding.inflate(layoutInflater)
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
 
-        setContentView(bbinding.root)
+        val navController = navHostFragment.navController
 
-        val item = arrayOf("내가 쓴 글","댓글 단 글","자유게시판","질문게시판","거래게시판","단대별 게시판")
-
-        bbinding.listview.adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, item)
-
+        NavigationUI.setupWithNavController(mBinding.myBottomNav, navController)
     }
 
 

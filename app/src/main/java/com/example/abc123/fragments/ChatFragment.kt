@@ -1,4 +1,4 @@
-package com.example.abc123
+package com.example.abc123.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,5 +20,9 @@ class ChatFragment : Fragment() {
         mBinding = binding
 
         return mBinding?.root
+    }
+    override fun onDestroyView() {
+        mBinding = null
+        super.onDestroyView()
     }
 }
