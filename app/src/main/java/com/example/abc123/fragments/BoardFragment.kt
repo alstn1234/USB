@@ -25,8 +25,6 @@ class BoardFragment : Fragment() {
         mBinding = binding
         val item = arrayOf("내가 쓴 글", "내가 댓글 단 글", "자유게시판", "질문게시판", "거래게시판", "단대별 게시판")
         bbinding.listview.adapter = ArrayAdapter(requireActivity()!!, android.R.layout.simple_list_item_1, item)
-
-
             return bbinding?.root
         }
 
