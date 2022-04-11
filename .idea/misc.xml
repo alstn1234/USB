@@ -3,23 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable-v24/edge2.xml" value="0.1735" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/edge.xml" value="0.152" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/edge3.xml" value="0.1575" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/edge_mypage.xml" value="0.1735" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/edgemy.xml" value="0.1575" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/ic_baseline_chat_bubble_24.xml" value="0.1575" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/drawable/roungedge.xml" value="0.233" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/activity_edit_name.xml" value="0.4" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/activity_main.xml" value="0.26145833333333335" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/edit_name.xml" value="0.264" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/editname.xml" value="0.2" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_board.xml" value="0.2" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_chat.xml" value="0.26145833333333335" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_home.xml" value="0.26145833333333335" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/fragment_mypage.xml" value="0.264" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/layout/myedge.xml" value="0.246875" />
-        <entry key="..\:/Users/82104/AndroidStudioProjects/abc123/app/src/main/res/menu/bottom_nav.xml" value="0.26145833333333335" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/drawable/roundedge.xml" value="0.2515" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/activity_edit_name.xml" value="0.38645833333333335" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/activity_main.xml" value="0.17502532928064843" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/activity_set_school.xml" value="0.38645833333333335" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/array.xml" value="0.38645833333333335" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/fragment_board.xml" value="0.17502532928064843" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/fragment_chat.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/fragment_home.xml" value="0.17502532928064843" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/layout/fragment_mypage.xml" value="0.33" />
+        <entry key="..\:/AndroidProject/abc123/app/src/main/res/menu/bottom_nav.xml" value="0.35435897435897434" />
         <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable-v24/edge2.xml" value="0.302" />
         <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.3275" />
         <entry key="..\:/Users/alstn/AndroidStudioProjects/abc123/app/src/main/res/drawable/edge.xml" value="0.327" />
