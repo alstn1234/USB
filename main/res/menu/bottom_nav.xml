@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:title="홈"
+        android:icon="@drawable/ic_outline_home_24"
+        />
+    <item
+        android:id="@+id/boardFragment"
+        android:title="게시판"
+        android:icon="@drawable/ic_outline_dashboard_24"
+        />
+    <item
+        android:id="@+id/chatFragment"
+        android:title="채팅"
+        android:icon="@drawable/ic_outline_chat_24"
+        />
+    <item
+        android:id="@+id/mypageFragment"
+        android:title="마이페이지"
+        android:icon="@drawable/ic_outline_person_outline_24"
+        />
+</menu>
