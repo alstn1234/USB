@@ -9,12 +9,13 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/nametoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0091EA"
-        tools:ignore="MissingConstraints"
-        app:title="내 정보"/>
+        app:title="내 정보"
+        tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -33,7 +34,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
             android:paddingTop="10dp"/>
     </LinearLayout>
     <TextView
@@ -42,13 +42,14 @@
         android:text=" ※ 닉네임을 설정하면 30일간 변경할 수 없습니다."
         android:padding="10dp"/>
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Edit_nickbt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="닉네임 설정"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/roundedge"/>
+        android:background="@drawable/roundedge"
+        tools:ignore="OnClick" />
 
 
 </LinearLayout>

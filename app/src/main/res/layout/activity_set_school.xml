@@ -6,7 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".Set_School">
-
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/nametoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0091EA"
+        app:title="학교 학과 설정"
+        tools:ignore="MissingConstraints" />
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -36,8 +42,8 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/schoolrecyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
