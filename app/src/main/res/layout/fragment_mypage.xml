@@ -15,39 +15,10 @@
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:title="내 정보" />
-
-    <RelativeLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/profile_recycler"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/edge">
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            tools:srcCompat="@tools:sample/avatars" />
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="10dp"
-            android:layout_toRightOf="@id/imageView"
-            android:text="닉네임"
-            android:textColor="@color/black" />
-        <TextView
-            android:id="@+id/school"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@id/imageView"
-            android:layout_marginLeft="16dp"
-            android:layout_toRightOf="@+id/imageView"
-            android:text="수원대학교(학과)"
-            android:textColor="@color/black" />
-    </RelativeLayout>
-
+        android:layout_height="wrap_content"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"

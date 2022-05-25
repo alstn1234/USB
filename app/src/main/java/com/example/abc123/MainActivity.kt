@@ -15,8 +15,6 @@ import java.util.zip.Inflater
 class MainActivity : AppCompatActivity() {
 
     private lateinit var  mBinding : ActivityMainBinding
-    private lateinit var binding: MainActivity
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

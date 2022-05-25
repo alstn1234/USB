@@ -21,21 +21,20 @@ class Set_Name : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mybinding = ActivitySetNameBinding.inflate(layoutInflater)
-
         super.onCreate(savedInstanceState)
         setContentView(mybinding.root)
         mybinding.EditNickbt.setOnClickListener {
             val PlayerNickname = mybinding.editTextName.text
             if (PlayerNickname.toString() == ""){
                 Toast.makeText(this,"닉네임을 입력해주세요",Toast.LENGTH_SHORT).show()
-            }
+            }else{
             var nickdata = PlayerNickname.toString()
             fireDatabase.child("MyEX").child("UserExample").child("nickname").setValue(nickdata)
-            Toast.makeText(this, "완료", Toast.LENGTH_SHORT).show()
+            finish()
+            }
         }
     }
     override fun onBackPressed() {
-        startActivity(Intent(this, MypageFragment::class.java))
         finish()
     }
 
