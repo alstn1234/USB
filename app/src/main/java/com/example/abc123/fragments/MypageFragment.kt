@@ -1,39 +1,18 @@
 package com.example.abc123.fragments
 
-import android.content.Context
-import android.content.DialogInterface
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil.setContentView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.example.abc123.*
-import com.example.abc123.R
 import com.example.abc123.databinding.FragmentBoardBinding
 import com.example.abc123.databinding.FragmentMypageBinding
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import kotlinx.android.synthetic.main.fragment_mypage.*
-import kotlinx.coroutines.NonDisposableHandle.parent
 
 class MypageFragment : Fragment() {
     private var mBinding: FragmentBoardBinding? = null
@@ -75,9 +54,10 @@ class MypageFragment : Fragment() {
             ArrayAdapter(requireActivity()!!, android.R.layout.simple_list_item_1, Mypage_post2)
         val intent_setprofile = Intent(requireActivity(), Set_Profile::class.java)
         val intent_resetprofile = Intent(requireActivity(), Reset_Profile::class.java)
-        val intent_myboard = Intent(requireActivity(), MyBoard::class.java)
+        val intent_mypost = Intent(requireActivity(), MyPost::class.java)
         val intent_setmajor = Intent(requireActivity(), Set_Major::class.java)
         val intent_setname = Intent(requireActivity(), Set_Name::class.java)
+        val intent_sanctions = Intent(requireActivity(), MySanctions::class.java)
         var builder = AlertDialog.Builder(
             requireContext(),
             android.R.style.Theme_DeviceDefault_Light_Dialog_Alert
@@ -103,7 +83,9 @@ class MypageFragment : Fragment() {
         mybinding.Mypagepost2lview.setOnItemClickListener { parent, view, position, id ->
             val element = parent.getItemAtPosition(position) as String
             if (element == "내가 쓴 글")
-                startActivity(intent_myboard)
+                startActivity(intent_mypost)
+            if (element == "제재 내역")
+                startActivity(intent_sanctions)
         }
         return mybinding?.root
     }

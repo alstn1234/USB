@@ -3,33 +3,32 @@ package com.example.abc123
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.abc123.databinding.ActivityMySanctionsBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
-import kotlinx.android.synthetic.main.activity_my_sanctions.*
+import kotlinx.android.synthetic.main.activity_mypost.*
 
-class MySanctions : AppCompatActivity() {
+class MyPost : AppCompatActivity() {
     private var fireDatabase = FirebaseDatabase.getInstance()
-    private lateinit var SanctionsList: ArrayList<Sanctionsmodel>
+    private lateinit var MypostList: ArrayList<Mypostmodel>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_my_sanctions)
+        setContentView(R.layout.activity_mypost)
 
-        SanctionsList = ArrayList<Sanctionsmodel>()
-        SanctionsRecycler.layoutManager = LinearLayoutManager(this)
-        val dbref = fireDatabase.getReference().child("MyEX/UserExample/sanctions")
+        MypostList = ArrayList<Mypostmodel>()
+        MypostRecycler.layoutManager = LinearLayoutManager(this)
+        val dbref = fireDatabase.getReference().child("MyEX/UserExample/mypost")
 
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                SanctionsList.clear()
+                MypostList.clear()
 
                 for (data in snapshot.children) {
-                    val item = data.getValue(Sanctionsmodel::class.java)
-                    SanctionsList.add(item!!)
+                    val item = data.getValue(Mypostmodel::class.java)
+                    MypostList.add(item!!)
                 }
-                SanctionsRecycler.adapter = SanctionsAdapter(SanctionsList)
+                MypostRecycler.adapter = MypostAdapter(MypostList)
 
             }
 

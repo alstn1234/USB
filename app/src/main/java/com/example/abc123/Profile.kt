@@ -5,5 +5,4 @@ class Profile (
     var nickname:String? ="",
     var school:String?= "",
     var major:String?= ""
-){
-}
+){}
