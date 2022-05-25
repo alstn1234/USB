@@ -14,8 +14,8 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
+        app:layout_constraintTop_toTopOf="parent">
+
         <TextView
             android:id="@+id/messageActivity_textView_topName"
             android:layout_width="wrap_content"
@@ -28,10 +28,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/white"
             android:textSize="24sp"
-            android:textStyle="bold"
-            />
+            android:textStyle="bold" />
     </LinearLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/constraintLayout2"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="60dp"
@@ -44,40 +45,73 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/messageActivity_recyclerview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
+            android:layout_height="match_parent" />
+
+
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        >
-        <EditText
-            android:id="@+id/messageActivity_editText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginRight="55dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/messageActivity_ImageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
-        <ImageView
-            android:id="@+id/messageActivity_ImageView"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/send"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/cammera_on_Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_weight="1"
+                app:srcCompat="@android:drawable/ic_menu_camera" />
+
+            <EditText
+                android:id="@+id/messageActivity_editText"
+                android:layout_width="0dp"
+                android:layout_height="53dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="6"
+                android:maxLength="50"/>
+
+            <ImageButton
+                android:id="@+id/imageButton3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/place" />
+
+            <ImageButton
+                android:id="@+id/loadImage_Btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:srcCompat="@drawable/photo" />
+
+            <ImageView
+                android:id="@+id/messageActivity_ImageView"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:src="@drawable/send" />
+        </LinearLayout>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
