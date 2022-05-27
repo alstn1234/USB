@@ -1,54 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Set_Name"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".Set_Name">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/nametoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#0091EA"
-        tools:ignore="MissingConstraints"
-        app:title="내 정보"/>
+        app:title="닉네임 변경"
+        tools:ignore="MissingConstraints" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="vertical"
+        android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:layout_gravity="center">
+        android:orientation="vertical"
+        android:padding="16dp">
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="닉네임"
-            android:textSize="17sp"/>
+            android:textSize="17sp" />
 
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:text="Name"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" ※ 닉네임을 설정하면 30일간 변경할 수 없습니다."
-        android:padding="10dp"/>
+        android:padding="10dp"
+        android:text=" ※ 닉네임을 설정하면 30일간 변경할 수 없습니다." />
+
     <Button
-        android:id="@+id/button"
+        android:id="@+id/Edit_nickbt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="닉네임 설정"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:background="@drawable/roundedge"/>
+        android:background="@drawable/roundedge"
+        android:text="닉네임 설정"
+        tools:ignore="OnClick" />
 
 
 </LinearLayout>
