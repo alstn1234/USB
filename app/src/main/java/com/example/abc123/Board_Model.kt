@@ -6,5 +6,6 @@ class Board_Model(
     val name: String = "",
     var time: String = "",
     var time2: String = "",
+    var nickname : String = ""
 
     )

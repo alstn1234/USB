@@ -44,7 +44,7 @@ class MyAdapter2(
                     }
             }
             holder.title.text = currentitem.title
-            holder.name.text = currentitem.name
+            holder.name.text = currentitem.nickname
             holder.comment_count.text = currentitem.comment_count.toString()
             holder.views_count.text = currentitem.views_count.toString()
             holder.time.text = currentitem.time

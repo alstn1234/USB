@@ -46,11 +46,20 @@ class WritingActivity3 : AppCompatActivity() {
     var sell_delivery: Boolean = false
     var sell_direct: Boolean = false
     var price = ""
+    val user = Firebase.auth.currentUser?.uid
+    var nick : String = ""
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         wbinding = ActivityWriting3Binding.inflate(layoutInflater)
         setContentView(wbinding.root)
+
+        fireDatabase.child("User").child(user.toString()).child("nickname").get()
+            .addOnSuccessListener {
+                nick = it.value.toString()
+            }.addOnFailureListener{
+            }
 
         array_img = arrayListOf<String>("", "", "")
         array_uri = arrayListOf<Uri>()
@@ -242,7 +251,8 @@ class WritingActivity3 : AppCompatActivity() {
                 time,
                 time2,
                 image_count,
-                str
+                str,
+                nick
             )
 
             val childUpdates = hashMapOf<String, Any>(

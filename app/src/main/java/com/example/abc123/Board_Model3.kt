@@ -17,7 +17,8 @@ class Board_Model3(
     var time: String = "",
     var time2: String = "",
     var image_count: Int? = null,
-    var board_title: String = ""
+    var board_title: String = "",
+    var nickname : String = ""
 
 
 ) : Serializable

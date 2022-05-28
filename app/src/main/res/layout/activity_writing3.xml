@@ -64,23 +64,26 @@
 
                 <Button
                     android:id="@+id/gallery"
-                    android:layout_width="66dp"
+                    android:layout_width="0dp"
                     android:layout_height="35dp"
+                    android:layout_weight="1"
                     android:layout_marginStart="15dp"
                     android:background="@drawable/button_edge"
                     android:text="이미지" />
 
                 <CheckBox
                     android:id="@+id/direct_checkbox"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="130dp"
                     android:text="직거래" />
 
                 <CheckBox
                     android:id="@+id/delivery_checkbox"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_marginStart="10dp"
                     android:text="택배" />
 

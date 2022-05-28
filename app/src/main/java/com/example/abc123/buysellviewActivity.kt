@@ -60,7 +60,7 @@ class buysellviewActivity : AppCompatActivity() {
         binding.toolbar.title = board_title
 
         binding.title.text = list.title
-        binding.nickname.text = list.name
+        binding.nickname.text = list.nickname
         binding.timeDate.text = list.time
         binding.timeHd.text = list.time2
         binding.content.text = list.detail
