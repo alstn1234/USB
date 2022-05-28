@@ -33,6 +33,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.abc123.databinding.ActivityMessageBinding
+import com.example.test28.DataModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.*
@@ -207,7 +208,8 @@ class MessageActivity : AppCompatActivity() {
         :
         RecyclerView.Adapter<RecyclerViewAdapter.MessageViewHolder>() {
         private val comments = ArrayList<ChatModel.Comment>()
-        private var friend: Friend? = null
+
+        private var friend: DataModel? = null
 
         init {
             fireDatabase.child("users").child(destinationUid.toString())
@@ -217,7 +219,8 @@ class MessageActivity : AppCompatActivity() {
                     }
 
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        friend = snapshot.getValue(Friend::class.java)
+
+                        friend = snapshot.getValue(DataModel::class.java)
                         binding.messageActivityTextViewTopName.text = friend?.name
                         getMessageList()
                     }

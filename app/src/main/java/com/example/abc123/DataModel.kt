@@ -1,25 +1,27 @@
 package com.example.test28
 
 data class DataModel(
-    var email :String="",
-    var password :String="",
-    var name :String="",
-    var birth :String="",
-    var nickname :String=""
+    var email: String = "",
+    var password: String = "",
+    var name: String = "",
+    var birth: String = "",
+    var nickname: String = "",
+    var uid: String = "",
+    var profileImageUrl: String? = null
 )
 
 data class SNSDataModel(
-    var name :String="",
-    var birth :String="",
-    var nickname :String=""
+    var name: String = "",
+    var birth: String = "",
+    var nickname: String = ""
 )
 
 data class MyBoardTitleModel(
-    var Boardtitle :String="",
+    var Boardtitle: String = "",
 
-)
+    )
 
 data class MyCommentTitleModel(
-    var Boardtitle :String="",
-    var Comment :String=""
+    var Boardtitle: String = "",
+    var Comment: String = ""
 )
