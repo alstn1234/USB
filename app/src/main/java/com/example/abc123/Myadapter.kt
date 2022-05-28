@@ -19,7 +19,7 @@ class MyAdapter(private val boardList: ArrayList<Board_Model>) :
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentitem = boardList[position]
         holder.title.text = currentitem.title
-        holder.name.text = currentitem.name
+        holder.name.text = currentitem.nickname
         holder.time.text = currentitem.time + " " + currentitem.time2
         holder.num.text = (position + 1).toString()
     }

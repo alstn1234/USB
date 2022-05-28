@@ -43,7 +43,7 @@ class MyAdapter3(val boardList: ArrayList<Board_Model3>, val requestManager: Req
                 delivery.layoutParams.height = 60
 
             holder.title.text = currentitem.title
-            holder.name.text = currentitem.name
+            holder.name.text = currentitem.nickname
             holder.time.text = currentitem.time
             holder.num.text = (position + 1).toString()
             holder.price.text = currentitem.price + "원"

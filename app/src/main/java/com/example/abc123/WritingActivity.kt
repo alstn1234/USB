@@ -13,8 +13,13 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abc123.databinding.WritingBinding
+import com.example.test28.DataModel
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.coroutines.CoroutineScope
@@ -22,6 +27,7 @@ import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 class WritingActivity : AppCompatActivity() {
 
@@ -42,6 +48,9 @@ class WritingActivity : AppCompatActivity() {
     val range = (1..999999)
     val random = range.random()
     var state = false
+    val user = Firebase.auth.currentUser?.uid
+    var nick : String = ""
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +62,15 @@ class WritingActivity : AppCompatActivity() {
         str = intent.getStringExtra("name").toString()
 
         uid = intent.getStringExtra("uid").toString()
+
+
+        fireDatabase.child("User").child(user.toString()).child("nickname").get()
+            .addOnSuccessListener {
+                nick = it.value.toString()
+            }.addOnFailureListener{
+            }
+
+
 
         val long_now = System.currentTimeMillis()
 
@@ -209,12 +227,16 @@ class WritingActivity : AppCompatActivity() {
 
     fun write(str: String) {
         val range = (1..999999)
-        val user = Firebase.auth.currentUser?.uid
         board_id = user.toString() + "_" + formatter.format(now) + "_" + range.random().toString()
         val database = FirebaseDatabase.getInstance().getReference()
         val location = str
-        val key = database.child("board").child(location).push().key
+
+
         CoroutineScope(Main).launch {
+
+
+
+        val key = database.child("board").child(location).push().key
             if (image_count == 0) {
                 array_img.add("")
             } else if (image_count == 1) {
@@ -237,7 +259,8 @@ class WritingActivity : AppCompatActivity() {
                 time,
                 time2,
                 image_count,
-                str
+                str,
+                nick
             )
 
             val childUpdates = hashMapOf<String, Any>(

@@ -64,8 +64,6 @@ class SignUpActivity : AppCompatActivity() {
                                         ""
                                     )
                                     database.child("User").child(uid).setValue(dataInput)
-                                   database.child("User").child(uid).setValue(dataInput)
-
 
                                     val intent = Intent(this, MainActivity::class.java)
                                     startActivity(intent)

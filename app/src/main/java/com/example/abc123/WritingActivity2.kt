@@ -24,6 +24,8 @@ class WritingActivity2 : AppCompatActivity() {
     val now = Date()
     val range = (1..999999)
     val user = Firebase.auth.currentUser?.uid
+    var nick : String = ""
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         wbinding = ActivityWriting2Binding.inflate(layoutInflater)
@@ -36,6 +38,12 @@ class WritingActivity2 : AppCompatActivity() {
         board_id = user.toString() + "_" + formatter.format(now) + "_" + range.random().toString()
         time2 = t_dateFormat.format(t_date)
         time = t_dateFormat2.format(t_date)
+
+        fireDatabase.child("User").child(user.toString()).child("nickname").get()
+            .addOnSuccessListener {
+                nick = it.value.toString()
+            }.addOnFailureListener{
+            }
 
         setSupportActionBar(wbinding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
@@ -79,7 +87,8 @@ class WritingActivity2 : AppCompatActivity() {
                     wbinding.titleEt.text.toString(),
                     user.toString(),
                     time,
-                    time2
+                    time2,
+                    nick
                 )
 
                 val childUpdates = hashMapOf<String, Any>(
