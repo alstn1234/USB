@@ -14,28 +14,40 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.net.toFile
 import com.bumptech.glide.Glide
-import com.example.abc123.databinding.ActivityBuysellviewBinding
+import com.example.test28.DataModel
+import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import com.example.abc123.databinding.ActivityBuysellviewBinding as ActivityBuysellviewBinding1
 
 class buysellviewActivity : AppCompatActivity() {
-    lateinit var binding: ActivityBuysellviewBinding
+    lateinit var binding: ActivityBuysellviewBinding1
     lateinit var list: Board_Model3
     lateinit var board_title: String
 
+    lateinit var friend: ArrayList<DataModel>
+    private lateinit var auth: FirebaseAuth
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityBuysellviewBinding.inflate(layoutInflater)
-
+        binding = ActivityBuysellviewBinding1.inflate(layoutInflater)
+        friend = arrayListOf<DataModel>()
         val progressDialog = ProgressDialog(this)
         progressDialog.setMessage("로딩중...")
         progressDialog.setCancelable(false)
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
 
+        var uid = Firebase.auth.currentUser?.uid.toString()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -86,6 +98,7 @@ class buysellviewActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 2000)
 
@@ -94,6 +107,18 @@ class buysellviewActivity : AppCompatActivity() {
                 intent22.putExtra("imageUri", list.img1)
                 intent22.putExtra("img_num", "1")
                 ContextCompat.startActivity(this, intent22, null)
+        }
+
+        //수정사항
+        binding.gochat.setOnClickListener {
+            if(list.name==uid){
+                Toast.makeText(this@buysellviewActivity,"본인이랑 채팅을 할 수 없습니다.",Toast.LENGTH_LONG).show()
+            }
+            else {
+                val intent = Intent(this, MessageActivity::class.java)
+                intent.putExtra("destinationUid", list.name)
+                startActivity(intent)
+            }
         }
 
         binding.image2.setOnClickListener{

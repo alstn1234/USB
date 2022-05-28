@@ -9,8 +9,12 @@ import android.widget.Toast
 import com.example.abc123.databinding.ActivitySignUpBinding
 import com.example.test28.DataModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
+private lateinit var database: DatabaseReference
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -24,6 +28,8 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         auth = FirebaseAuth.getInstance()
+
+        database= Firebase.database.reference
 
         val email = binding.signupemail
         val password = binding.signuppassword
@@ -45,18 +51,20 @@ class SignUpActivity : AppCompatActivity() {
                                     Log.d(TAG, "회원등록을 성공 하였습니다")
                                     val user = auth.currentUser
 
-                                    val database = FirebaseDatabase.getInstance()
-                                    val myRef = database.getReference("Users")
 
+                                    var uid: String = auth.currentUser?.uid.toString()
                                     val dataInput = DataModel(
                                         binding.signupemail.text.toString(),
                                         binding.signuppassword.text.toString(),
                                         binding.signupname.text.toString(),
                                         binding.signupbirth.text.toString(),
-                                        binding.signupnickname.text.toString()
+
+                                        binding.signupnickname.text.toString(),
+                                        uid,
+                                        ""
                                     )
-                                    var uid: String = auth.currentUser?.uid.toString()
-                                    myRef.child(uid).push().setValue(dataInput)
+                                    database.child("User").child(uid).setValue(dataInput)
+                                   database.child("User").child(uid).setValue(dataInput)
 
 
                                     val intent = Intent(this, MainActivity::class.java)

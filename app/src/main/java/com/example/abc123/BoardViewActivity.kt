@@ -69,11 +69,13 @@ class BoardViewActivity : AppCompatActivity() {
             image_load(list.img2, binding.image2)
             image_load(list.img3, binding.image3)
         } else {
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
             return
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 2000)
 
