@@ -75,7 +75,9 @@
             android:gravity="right"
             android:orientation="horizontal">
 
-            <ImageView
+
+            <ImageButton
+                android:id="@+id/gochat"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="right"
