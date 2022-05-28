@@ -168,19 +168,23 @@ class WritingActivity : AppCompatActivity() {
 
                     }
                     if (image_count == 0) {
+                        if(progressDialog.isShowing)
                         progressDialog.dismiss()
                         finish()
                     } else if (image_count == 1) {
+                        if(progressDialog.isShowing)
                         Handler(Looper.getMainLooper()).postDelayed({
                             progressDialog.dismiss()
                             finish()
                         }, 2000)
                     } else if (image_count == 2) {
+                        if(progressDialog.isShowing)
                         Handler(Looper.getMainLooper()).postDelayed({
                             progressDialog.dismiss()
                             finish()
                         }, 3000)
                     } else if (image_count == 3) {
+                        if(progressDialog.isShowing)
                         Handler(Looper.getMainLooper()).postDelayed({
                             progressDialog.dismiss()
                             finish()

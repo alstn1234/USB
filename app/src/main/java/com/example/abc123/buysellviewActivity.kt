@@ -86,6 +86,7 @@ class buysellviewActivity : AppCompatActivity() {
         }
 
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 2000)
 

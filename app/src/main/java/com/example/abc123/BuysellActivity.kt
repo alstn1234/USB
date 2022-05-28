@@ -63,7 +63,8 @@ class BuysellActivity : AppCompatActivity() {
 
         board_list_view()
         Handler(Looper.getMainLooper()).postDelayed({
-            progressDialog.dismiss()
+            if (progressDialog.isShowing)
+                progressDialog.dismiss()
         }, 1000)
 
         boardRecyclerview.setOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -81,7 +82,8 @@ class BuysellActivity : AppCompatActivity() {
                         boardRecyclerview.adapter!!.notifyDataSetChanged()
                         boardRecyclerview.isNestedScrollingEnabled = false
                         Handler(Looper.getMainLooper()).postDelayed({
-                            progressDialog.dismiss()
+                            if (progressDialog.isShowing)
+                                progressDialog.dismiss()
                         }, 1000)
                         boardRecyclerview.isNestedScrollingEnabled = true
                     }
@@ -166,7 +168,8 @@ class BuysellActivity : AppCompatActivity() {
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
         progressDialog.show();
         Handler(Looper.getMainLooper()).postDelayed({
-            progressDialog.dismiss()
+            if (progressDialog.isShowing)
+                progressDialog.dismiss()
         }, 1000)
         super.onResume()
     }

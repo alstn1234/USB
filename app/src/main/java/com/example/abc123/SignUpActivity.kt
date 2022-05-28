@@ -9,9 +9,12 @@ import android.widget.Toast
 import com.example.abc123.databinding.ActivitySignUpBinding
 import com.example.test28.DataModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
-
+private lateinit var database1 : DatabaseReference
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivitySignUpBinding
@@ -47,6 +50,7 @@ class SignUpActivity : AppCompatActivity() {
 
                                     val database = FirebaseDatabase.getInstance()
                                     val myRef = database.getReference("Users")
+                                    database1 =  Firebase.database.reference
 
                                     val dataInput = DataModel(
                                         binding.signupemail.text.toString(),
@@ -56,7 +60,7 @@ class SignUpActivity : AppCompatActivity() {
                                         binding.signupnickname.text.toString()
                                     )
                                     var uid: String = auth.currentUser?.uid.toString()
-                                    myRef.child(uid).push().setValue(dataInput)
+                                    database1.child("User").child(uid).setValue(dataInput)
 
 
                                     val intent = Intent(this, MainActivity::class.java)

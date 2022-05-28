@@ -60,6 +60,7 @@ class EndwordActivity : AppCompatActivity() {
 
         board_list_view()
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 1000)
 

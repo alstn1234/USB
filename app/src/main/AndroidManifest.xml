@@ -20,7 +20,7 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="p">
         <activity
-            android:name=".SNNSSignupActivity"
+            android:name=".SNSSignupActivity"
             android:exported="false" />
         <activity
             android:name=".PasswordResetActivity"

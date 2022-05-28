@@ -61,6 +61,7 @@ class BoardActivity : AppCompatActivity() {
 
         getBoardData()
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 1000)
 
@@ -78,6 +79,7 @@ class BoardActivity : AppCompatActivity() {
                         boardRecyclerview.adapter!!.notifyDataSetChanged()
                         boardRecyclerview.isNestedScrollingEnabled = false
                         Handler(Looper.getMainLooper()).postDelayed({
+                            if(progressDialog.isShowing)
                             progressDialog.dismiss()
                         }, 1000)
                         boardRecyclerview.isNestedScrollingEnabled = true
@@ -184,6 +186,7 @@ class BoardActivity : AppCompatActivity() {
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
         progressDialog.show();
         Handler(Looper.getMainLooper()).postDelayed({
+            if(progressDialog.isShowing)
             progressDialog.dismiss()
         }, 1000)
         super.onResume()

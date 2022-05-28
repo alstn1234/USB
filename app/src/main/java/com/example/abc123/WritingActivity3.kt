@@ -168,20 +168,24 @@ class WritingActivity3 : AppCompatActivity() {
                     progressDialog.show()
                     write("buysell")
                     if (image_count == 0) {
+                        if(progressDialog.isShowing)
                         progressDialog.dismiss()
                         finish()
                     } else if (image_count == 1) {
                         Handler(Looper.getMainLooper()).postDelayed({
+                            if(progressDialog.isShowing)
                             progressDialog.dismiss()
                             finish()
                         }, 2000)
                     } else if (image_count == 2) {
                         Handler(Looper.getMainLooper()).postDelayed({
+                            if(progressDialog.isShowing)
                             progressDialog.dismiss()
                             finish()
                         }, 3000)
                     } else if (image_count == 3) {
                         Handler(Looper.getMainLooper()).postDelayed({
+                            if(progressDialog.isShowing)
                             progressDialog.dismiss()
                             finish()
                         }, 4000)
