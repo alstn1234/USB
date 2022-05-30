@@ -225,6 +225,7 @@ class WritingActivity3 : AppCompatActivity() {
         price = DecimalFormat("#,###").format(aa).toString()
         val database = FirebaseDatabase.getInstance().getReference()
         val location = str
+        val updates : MutableMap<String, Any> = HashMap()
         val key = database.child("board").child(location).push().key
         CoroutineScope(Main).launch {
             if (image_count == 0) {
@@ -259,6 +260,9 @@ class WritingActivity3 : AppCompatActivity() {
                 "board/$location/$key" to dataInput
             )
             database.updateChildren(childUpdates)
+
+            updates["board/${location+"_last_post"}"] = key.toString()
+            database.updateChildren(updates)
         }
     }
 

@@ -15,10 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.abc123.databinding.WritingBinding
 import com.example.test28.DataModel
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -230,11 +227,9 @@ class WritingActivity : AppCompatActivity() {
         board_id = user.toString() + "_" + formatter.format(now) + "_" + range.random().toString()
         val database = FirebaseDatabase.getInstance().getReference()
         val location = str
-
+        val updates : MutableMap<String, Any> = HashMap()
 
         CoroutineScope(Main).launch {
-
-
 
         val key = database.child("board").child(location).push().key
             if (image_count == 0) {
@@ -267,6 +262,9 @@ class WritingActivity : AppCompatActivity() {
                 "board/$location/$key" to dataInput
             )
             database.updateChildren(childUpdates)
+
+            updates["board/${location+"_last_post"}"] = key.toString()
+            database.updateChildren(updates)
         }
     }
 
