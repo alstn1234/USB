@@ -10,6 +10,8 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
 
 class MyAdapter2(
@@ -50,7 +52,13 @@ class MyAdapter2(
             holder.time.text = currentitem.time
             holder.num.text = (position + 1).toString()
             holder.itemView.setOnClickListener {
+                val database = FirebaseDatabase.getInstance().getReference()
+                val updates : MutableMap<String, Any> = HashMap()
                 val intent = Intent(holder.itemView.context, BoardViewActivity::class.java)
+
+                updates["board/${currentitem.board_title}/${currentitem.key}/views_count"] = ServerValue.increment(1)
+                database.updateChildren(updates)
+
                 intent.putExtra("data", currentitem)
                 intent.putExtra("title", str)
                 ContextCompat.startActivity(holder.itemView.context, intent, null)
