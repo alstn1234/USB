@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.test28.DataModel
 
 
 class ProfileAdapter(private val profileList: ArrayList<Profile>) :
@@ -19,7 +20,7 @@ class ProfileAdapter(private val profileList: ArrayList<Profile>) :
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val profileitem = profileList[position]
-        Glide.with(holder.itemView).load(profileitem.profile)
+        Glide.with(holder.itemView).load(profileitem.profileImageUrl)
             .into(holder.imageView)
         holder.nickname.text = profileitem.nickname
         holder.school.text = profileitem.school
