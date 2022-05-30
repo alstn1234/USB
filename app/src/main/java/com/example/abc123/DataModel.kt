@@ -7,7 +7,9 @@ data class DataModel(
     var birth: String = "",
     var nickname: String = "",
     var uid: String = "",
-    var profileImageUrl: String? = null
+    var profileImageUrl: String? = null,
+    var school: String? = "",
+    var major: String? = ""
 )
 
 data class SNSDataModel(

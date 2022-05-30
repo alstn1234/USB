@@ -4,12 +4,15 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.abc123.databinding.ActivitySetNameBinding
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.ktx.Firebase
 
 
 class Set_Name : AppCompatActivity() {
     private val fireDatabase = FirebaseDatabase.getInstance().getReference()
     private lateinit var mybinding: ActivitySetNameBinding
+    val user = Firebase.auth.currentUser?.uid.toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mybinding = ActivitySetNameBinding.inflate(layoutInflater)
@@ -21,7 +24,7 @@ class Set_Name : AppCompatActivity() {
                 Toast.makeText(this, "닉네임을 입력해주세요", Toast.LENGTH_SHORT).show()
             } else {
                 var nickdata = PlayerNickname.toString()
-                fireDatabase.child("MyEX").child("UserExample").child("nickname").setValue(nickdata)
+                fireDatabase.child("User/$user").child("nickname").setValue(nickdata)
                 finish()
             }
         }

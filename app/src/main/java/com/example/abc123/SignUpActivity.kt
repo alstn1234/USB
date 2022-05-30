@@ -60,11 +60,12 @@ class SignUpActivity : AppCompatActivity() {
                                         binding.signupbirth.text.toString(),
 
                                         binding.signupnickname.text.toString(),
-                                        uid,
-                                        ""
+                                        uid
                                     )
                                     database.child("User").child(uid).setValue(dataInput)
-
+                                    database.child("User").child(uid).child("profileImageUrl").setValue("https://firebasestorage.googleapis.com/v0/b/abc123-34300.appspot.com/o/profile%2Fbasicprofile.png?alt=media&token=bdd5a488-aa8d-4bbd-b17f-49e51af4af12")
+                                    database.child("User").child(uid).child("major").setValue("")
+                                    database.child("User").child(uid).child("school").setValue("")
                                     val intent = Intent(this, MainActivity::class.java)
                                     startActivity(intent)
 

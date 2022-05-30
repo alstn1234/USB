@@ -2,6 +2,7 @@ package com.example.abc123.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,15 +13,20 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.abc123.*
 import com.example.abc123.databinding.FragmentBoardBinding
 import com.example.abc123.databinding.FragmentMypageBinding
+import com.example.test28.DataModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class MypageFragment : Fragment() {
     private var mBinding: FragmentBoardBinding? = null
     private lateinit var mybinding: FragmentMypageBinding
-    private val fireDatabase = FirebaseDatabase.getInstance()
+    private lateinit var auth: FirebaseAuth
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
     private lateinit var profileList: ArrayList<Profile>
 
     override fun onCreateView(
@@ -29,26 +35,24 @@ class MypageFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         mybinding = FragmentMypageBinding.inflate(inflater, container, false)
-        profileList = arrayListOf()
-        val dbref = fireDatabase.getReference().child("MyEX")
+        profileList = arrayListOf<Profile>()
+        val user = Firebase.auth.currentUser?.uid
         mybinding.profileRecycler.layoutManager = LinearLayoutManager(requireContext())
-        dbref.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                profileList.clear()
-                for (data in snapshot.children) {
-                    val item = data.getValue(Profile::class.java)
+        fireDatabase
+            .child("User").child(user.toString())
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    profileList.clear()
+                    val item = snapshot.getValue(Profile::class.java)
                     profileList.add(item!!)
+                    mybinding.profileRecycler.adapter = ProfileAdapter(profileList)
                 }
-                mybinding.profileRecycler.adapter =
-                    ProfileAdapter(profileList)
 
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-            }
-        })
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
         val Mypage_post1 = arrayOf("프로필 변경", "학과 설정", "닉네임 변경")
-        val Mypage_post2 = arrayOf("내가 쓴 글", "내 댓글", "제재 내역")
+        val Mypage_post2 = arrayOf("내가 쓴 글", "내 댓글", "제재 내역","로그아웃")
         // 마이페이지 계정탭 기본 어댑터
         mybinding.Mypagepost1lview.adapter =
             ArrayAdapter(requireActivity()!!, android.R.layout.simple_list_item_1, Mypage_post1)
@@ -89,6 +93,10 @@ class MypageFragment : Fragment() {
                 startActivity(intent_mypost)
             if (element == "제재 내역")
                 startActivity(intent_sanctions)
+            if (element == "로그아웃"){
+                auth.signOut()
+            }
+
         }
         return mybinding?.root
     }
