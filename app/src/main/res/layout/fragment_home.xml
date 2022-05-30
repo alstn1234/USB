@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.abc123.fragments.HomeFragment">
+    tools:context="com.example.abc123.fragments.HomeFragment"
+    android:background="@color/white">
 
     <TextView
         android:layout_width="wrap_content"
@@ -44,15 +45,18 @@
                 android:textStyle="bold" />
 
             <LinearLayout
+                android:id="@+id/free_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/custom_ripple_effect">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
                     android:text="자유게시판"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -63,25 +67,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:text="자유게시판 최신글"
                     android:textSize="12dp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/friend_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/custom_ripple_effect">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
                     android:text="친목게시판"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -92,22 +96,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:text="컴퓨터학부"
                     android:textSize="12dp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    />
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ad_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:padding="10dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:background="@drawable/custom_ripple_effect">
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="77dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
                     android:text="홍보게시판"
                     android:textColor="@color/black"
                     android:textSize="16dp"
@@ -118,10 +124,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="15dp"
-                    android:text="졸업프로젝트"
                     android:textSize="12dp"
-                    android:textStyle="italic" />
+                    android:textStyle="italic"
+                    />
 
             </LinearLayout>
 
@@ -137,16 +142,19 @@
                 android:textStyle="italic" />
 
             <LinearLayout
+                android:id="@+id/buysell_layout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:background="@drawable/custom_ripple_effect"
+                >
 
                 <ImageView
-                    android:layout_width="71dp"
-                    android:layout_height="84dp"
+                    android:id="@+id/buysell_img1"
+                    android:layout_width="80dp"
+                    android:layout_height="100dp"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="15dp"
-                    app:srcCompat="@drawable/ic_baseline_error_24" />
+                    android:layout_marginTop="15dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -159,7 +167,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="25dp"
-                        android:text="쉽게배우는 운영체제론 책 팝니다"
                         android:textColor="@color/black" />
 
                     <TextView
@@ -168,8 +175,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="20dp"
-                        android:text="가격 : 3,000 원"
-                        android:textColor="@color/black" />
+                        android:textStyle="bold"
+                        android:textColor="#FF0000" />
 
                 </LinearLayout>
 

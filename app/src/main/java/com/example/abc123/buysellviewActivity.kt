@@ -175,8 +175,7 @@ class buysellviewActivity : AppCompatActivity() {
                 dlg.setPositiveButton("예", DialogInterface.OnClickListener { dialog, which ->
                     val key = list.key
                     FirebaseDatabase.getInstance().getReference().child("board")
-                        .child(list.board_title).child("$key").removeValue()
-
+                        .child(list.board_title).child(key).removeValue()
                     finish()
                 })
                 dlg.setNegativeButton("아니오", DialogInterface.OnClickListener { dialog, which ->
