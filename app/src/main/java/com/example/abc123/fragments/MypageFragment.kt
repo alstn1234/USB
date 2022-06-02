@@ -1,8 +1,8 @@
 package com.example.abc123.fragments
 
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.abc123.*
 import com.example.abc123.databinding.FragmentBoardBinding
 import com.example.abc123.databinding.FragmentMypageBinding
-import com.example.test28.DataModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
@@ -21,6 +20,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.NonCancellable.cancel
 
 class MypageFragment : Fragment() {
     private var mBinding: FragmentBoardBinding? = null
@@ -52,7 +52,7 @@ class MypageFragment : Fragment() {
                 }
             })
         val Mypage_post1 = arrayOf("프로필 변경", "학과 설정", "닉네임 변경")
-        val Mypage_post2 = arrayOf("내가 쓴 글", "내 댓글", "제재 내역","로그아웃")
+        val Mypage_post2 = arrayOf("내가 쓴 글", "내 댓글", "제재 내역", "로그아웃")
         // 마이페이지 계정탭 기본 어댑터
         mybinding.Mypagepost1lview.adapter =
             ArrayAdapter(requireActivity()!!, android.R.layout.simple_list_item_1, Mypage_post1)
@@ -65,6 +65,7 @@ class MypageFragment : Fragment() {
         val intent_setmajor = Intent(requireActivity(), Set_Major::class.java)
         val intent_setname = Intent(requireActivity(), Set_Name::class.java)
         val intent_sanctions = Intent(requireActivity(), MySanctions::class.java)
+        val intent_main = Intent(requireActivity(), MainActivity::class.java)
         var builder = AlertDialog.Builder(
             requireContext(),
             android.R.style.Theme_DeviceDefault_Light_Dialog_Alert
@@ -93,11 +94,24 @@ class MypageFragment : Fragment() {
                 startActivity(intent_mypost)
             if (element == "제재 내역")
                 startActivity(intent_sanctions)
-            if (element == "로그아웃"){
-                auth.signOut()
+            if (element == "로그아웃") {
+                var builder = AlertDialog.Builder(requireContext())
+                builder.setTitle("로그아웃")
+                    .setMessage("로그아웃 하시겠습니까?")
+                    .setCancelable(false)
+                    .setPositiveButton("확인",
+                        DialogInterface.OnClickListener { dialog, id ->
+                            startActivity(intent_main)
+                            auth.signOut()
+                        })
+                    .setNegativeButton("취소",
+                        DialogInterface.OnClickListener { dialog, id ->
+                            requireContext()
+                        })
+                builder.show()
             }
-
         }
+
         return mybinding?.root
     }
 
