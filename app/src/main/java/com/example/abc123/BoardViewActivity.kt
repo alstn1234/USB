@@ -33,7 +33,7 @@ class BoardViewActivity : AppCompatActivity() {
         progressDialog.setMessage("로딩중...")
         progressDialog.setCancelable(false)
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
-
+        var uid = Firebase.auth.currentUser?.uid.toString()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -56,11 +56,19 @@ class BoardViewActivity : AppCompatActivity() {
         if (list.image_count == 1) {
             imagesize_change(binding.image1)
             image_load(list.img1, binding.image1)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else if (list.image_count == 2) {
             imagesize_change(binding.image1)
             imagesize_change(binding.image2)
             image_load(list.img1, binding.image1)
             image_load(list.img2, binding.image2)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else if (list.image_count == 3) {
             imagesize_change(binding.image1)
             imagesize_change(binding.image2)
@@ -68,16 +76,28 @@ class BoardViewActivity : AppCompatActivity() {
             image_load(list.img1, binding.image1)
             image_load(list.img2, binding.image2)
             image_load(list.img3, binding.image3)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else {
             if(progressDialog.isShowing)
             progressDialog.dismiss()
-            return
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            if(progressDialog.isShowing)
-            progressDialog.dismiss()
-        }, 2000)
+
+        //채팅으로 이동
+        binding.chat1.setOnClickListener {
+            Toast.makeText(this@BoardViewActivity,"본인이랑 채팅을 할 수 없습니다.",Toast.LENGTH_LONG).show()
+            if(list.name==uid){
+                Toast.makeText(this@BoardViewActivity,"본인이랑 채팅을 할 수 없습니다.",Toast.LENGTH_LONG).show()
+            }
+            else {
+                val intent = Intent(this, MessageActivity::class.java)
+                intent.putExtra("destinationUid", list.name)
+                startActivity(intent)
+            }
+        }
 
         binding.image1.setOnClickListener{
             if(list.image_count!!.toInt() == 1) {
@@ -105,6 +125,8 @@ class BoardViewActivity : AppCompatActivity() {
                 ContextCompat.startActivity(this, intent22, null)
             }
         }
+
+
 
     }
 

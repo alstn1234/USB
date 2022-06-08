@@ -92,6 +92,11 @@ class MessageActivity : AppCompatActivity() {
 
         }
 
+        location.setOnClickListener {
+            val intent3=Intent(Intent.ACTION_VIEW,Uri.parse("https://search.naver.com/search.naver?where=nexearch&sm=tab_jum&query=%EB%B9%A0%EB%A5%B8%EA%B8%B8%EC%B0%BE%EA%B8%B0"))
+        startActivity(intent3)
+        }
+
 
         @SuppressLint("SimpleDateFormat")
         //메세지를 보낸 시간
@@ -212,7 +217,7 @@ class MessageActivity : AppCompatActivity() {
         private var friend: DataModel? = null
 
         init {
-            fireDatabase.child("users").child(destinationUid.toString())
+            fireDatabase.child("User").child(destinationUid.toString())
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
 
@@ -221,7 +226,7 @@ class MessageActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
                         friend = snapshot.getValue(DataModel::class.java)
-                        binding.messageActivityTextViewTopName.text = friend?.name
+                        binding.messageActivityTextViewTopName.text = friend?.nickname
                         getMessageList()
                     }
                 })
