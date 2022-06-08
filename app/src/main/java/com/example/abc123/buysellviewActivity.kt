@@ -29,12 +29,14 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.util.HashMap
 import com.example.abc123.databinding.ActivityBuysellviewBinding as ActivityBuysellviewBinding1
 
 class buysellviewActivity : AppCompatActivity() {
     lateinit var binding: ActivityBuysellviewBinding1
     lateinit var list: Board_Model3
     lateinit var board_title: String
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     lateinit var friend: ArrayList<DataModel>
     private lateinit var auth: FirebaseAuth
@@ -47,7 +49,7 @@ class buysellviewActivity : AppCompatActivity() {
         progressDialog.setCancelable(false)
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
 
-        var uid = Firebase.auth.currentUser?.uid.toString()
+        val uid = Firebase.auth.currentUser?.uid.toString()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -163,7 +165,14 @@ class buysellviewActivity : AppCompatActivity() {
                 return true
             }
             R.id.board_edit -> {
-                return super.onOptionsItemSelected(item)
+                val intent = Intent(this, buysellupdateActivity::class.java)
+                if (list.name == Firebase.auth.currentUser?.uid) {
+                    intent.putExtra("data", list)
+                    finish()
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "권한이 없습니다.", Toast.LENGTH_LONG).show()
+                }
             }
             R.id.board_delete -> {
                 val dlg: AlertDialog.Builder = AlertDialog.Builder(this)
@@ -174,6 +183,16 @@ class buysellviewActivity : AppCompatActivity() {
 
                 dlg.setPositiveButton("예", DialogInterface.OnClickListener { dialog, which ->
                     val key = list.key
+                    val updates : MutableMap<String, Any> = HashMap()
+                    fireDatabase.child("board").child(list.board_title + "_last_post").get()
+                        .addOnSuccessListener {
+                            val key2 = it.value.toString()
+                            if(key==key2){
+                                updates["board/${list.board_title+"_last_post"}"] = ""
+                                FirebaseDatabase.getInstance().getReference().updateChildren(updates)
+                            }
+                        }.addOnFailureListener{
+                        }
                     FirebaseDatabase.getInstance().getReference().child("board")
                         .child(list.board_title).child(key).removeValue()
                     finish()

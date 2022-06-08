@@ -25,7 +25,9 @@ class BoardActivity : AppCompatActivity() {
     private lateinit var boardArrayList: ArrayList<Board_Model2>
     private lateinit var boardArraylist2: ArrayList<Board_Model2>
     var ppage_max: Int = 0
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
     lateinit var mGlideRequestManager: RequestManager
+    lateinit var title: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         val progressDialog = ProgressDialog(this)
@@ -61,8 +63,8 @@ class BoardActivity : AppCompatActivity() {
 
         getBoardData()
         Handler(Looper.getMainLooper()).postDelayed({
-            if(progressDialog.isShowing)
-            progressDialog.dismiss()
+            if (progressDialog.isShowing)
+                progressDialog.dismiss()
         }, 1000)
 
         boardRecyclerview.setOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -79,8 +81,8 @@ class BoardActivity : AppCompatActivity() {
                         boardRecyclerview.adapter!!.notifyDataSetChanged()
                         boardRecyclerview.isNestedScrollingEnabled = false
                         Handler(Looper.getMainLooper()).postDelayed({
-                            if(progressDialog.isShowing)
-                            progressDialog.dismiss()
+                            if (progressDialog.isShowing)
+                                progressDialog.dismiss()
                         }, 1000)
                         boardRecyclerview.isNestedScrollingEnabled = true
                     }
@@ -111,6 +113,7 @@ class BoardActivity : AppCompatActivity() {
 
 
     fun board_list_view(str: String) {
+        title = str
         dbref = FirebaseDatabase.getInstance().getReference().child("board")
             .child(str)
         dbref.addValueEventListener(object : ValueEventListener {
@@ -127,6 +130,17 @@ class BoardActivity : AppCompatActivity() {
                         if (i >= 0)
                             boardArraylist2.add(boardArrayList[i])
                     }
+                    fireDatabase.child("board").child(str + "_last_post").get()
+                        .addOnSuccessListener {
+                            val updates: MutableMap<String, Any> = HashMap()
+                            val key = it.value.toString()
+                            if (key == "") {
+                                updates["board/${str + "_last_post"}"] = boardArrayList[0].key
+                                FirebaseDatabase.getInstance().getReference()
+                                    .updateChildren(updates)
+                            }
+                        }.addOnFailureListener {
+                        }
                     ppage_max = ppage_max - 15
                     boardRecyclerview.adapter =
                         MyAdapter2(
@@ -186,8 +200,8 @@ class BoardActivity : AppCompatActivity() {
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
         progressDialog.show();
         Handler(Looper.getMainLooper()).postDelayed({
-            if(progressDialog.isShowing)
-            progressDialog.dismiss()
+            if (progressDialog.isShowing)
+                progressDialog.dismiss()
         }, 1000)
         super.onResume()
     }
