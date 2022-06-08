@@ -20,11 +20,13 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.util.HashMap
 
 class BoardViewActivity : AppCompatActivity() {
     lateinit var binding: ActivityBoardViewBinding
     lateinit var list: Board_Model2
     lateinit var board_title: String
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardViewBinding.inflate(layoutInflater)
@@ -137,7 +139,15 @@ class BoardViewActivity : AppCompatActivity() {
                 return true
             }
             R.id.board_edit -> {
-                return super.onOptionsItemSelected(item)
+                val intent = Intent(this, boardupdateActivity::class.java)
+                if (list.name == Firebase.auth.currentUser?.uid) {
+                    intent.putExtra("data", list)
+                    intent.putExtra("title", board_title)
+                    finish()
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "권한이 없습니다.", Toast.LENGTH_LONG).show()
+                }
             }
             R.id.board_delete -> {
                 if (list.name == Firebase.auth.currentUser?.uid) {
@@ -149,6 +159,16 @@ class BoardViewActivity : AppCompatActivity() {
 
                     dlg.setPositiveButton("예", DialogInterface.OnClickListener { dialog, which ->
                         val key = list.key
+                        val updates : MutableMap<String, Any> = HashMap()
+                        fireDatabase.child("board").child(list.board_title + "_last_post").get()
+                            .addOnSuccessListener {
+                                val key2 = it.value.toString()
+                                if(key==key2){
+                                    updates["board/${list.board_title+"_last_post"}"] = ""
+                                    FirebaseDatabase.getInstance().getReference().updateChildren(updates)
+                                }
+                            }.addOnFailureListener{
+                            }
                         FirebaseDatabase.getInstance().getReference().child("board")
                             .child(list.board_title).child("$key").removeValue()
                         finish()
