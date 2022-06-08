@@ -31,6 +31,8 @@ class ChatFragment : Fragment() {
 
     private val fireDatabase = FirebaseDatabase.getInstance().reference
 
+
+
     //메모리에 올라갔을 때
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -102,7 +104,7 @@ class ChatFragment : Fragment() {
                     destinationUsers.add(destinationUid)
                 }
             }
-            fireDatabase.child("users").child("$destinationUid")
+            fireDatabase.child("User").child("$destinationUid")
                 .addListenerForSingleValueEvent(object : ValueEventListener {
                     override fun onCancelled(error: DatabaseError) {
                     }
@@ -110,10 +112,11 @@ class ChatFragment : Fragment() {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
                         val friend = snapshot.getValue(DataModel::class.java)
+
                         Glide.with(holder.itemView.context).load(friend?.profileImageUrl)
                             .apply(RequestOptions().circleCrop())
                             .into(holder.imageView)
-                        holder.textView_title.text = friend?.name
+                        holder.textView_title.text = friend?.nickname
                     }
                 })
             //메세지 내림차순 정렬 후 마지막 메세지의 키값을 가져
