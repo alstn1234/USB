@@ -10,6 +10,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.storage.FirebaseStorage
@@ -56,8 +57,11 @@ class MyAdapter2(
                 val updates : MutableMap<String, Any> = HashMap()
                 val intent = Intent(holder.itemView.context, BoardViewActivity::class.java)
 
-                updates["board/${currentitem.board_title}/${currentitem.key}/views_count"] = ServerValue.increment(1)
-                database.updateChildren(updates)
+                if(currentitem.name != FirebaseAuth.getInstance().currentUser?.uid.toString()) {
+                    updates["board/${currentitem.board_title}/${currentitem.key}/views_count"] =
+                        ServerValue.increment(1)
+                    database.updateChildren(updates)
+                }
 
                 intent.putExtra("data", currentitem)
                 intent.putExtra("title", str)
