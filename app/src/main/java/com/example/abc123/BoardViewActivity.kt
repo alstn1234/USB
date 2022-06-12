@@ -47,6 +47,11 @@ class BoardViewActivity : AppCompatActivity() {
         list = intent.getSerializableExtra("data") as Board_Model2
         binding.toolbar.title = board_title
 
+        fireDatabase.child("User").child(list.name).child("profileImageUrl").get()
+            .addOnSuccessListener {
+                Glide.with(this).load(it.value).into(binding.profile)
+            }
+
         binding.title.text = list.title
         binding.nickname.text = list.nickname
         binding.timeDate.text = list.time
