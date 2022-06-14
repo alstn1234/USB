@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF"
     android:orientation="vertical"
@@ -17,6 +18,24 @@
         app:title="                         SNS 회원가입"
         app:titleTextColor="@color/white"
         tools:ignore="MissingConstraints" />
+=======
+    android:background="#FFF"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".SNSSignupActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="SNS 회원가입"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 
 
     <EditText
@@ -55,23 +74,36 @@
         />
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/SnsSignupbutton"
         android:layout_width="350dp"
         android:layout_gravity="center"
+=======
+        android:id="@+id/snssignupbutton"
+        android:layout_width="match_parent"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="회원등록 하기"
         android:background="@drawable/round"/>
 
     <Button
+<<<<<<< HEAD
         android:id="@+id/SnsCancelbutton"
         android:layout_width="350dp"
         android:layout_gravity="center"
+=======
+        android:id="@+id/snscancelbutton"
+        android:layout_width="match_parent"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/round"
         android:text="취소" />
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 </LinearLayout>

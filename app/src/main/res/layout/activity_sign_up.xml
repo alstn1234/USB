@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFF"
     android:orientation="vertical"
@@ -18,6 +19,25 @@
         app:title="                            회원가입"
         app:titleTextColor="@color/white"
         tools:ignore="MissingConstraints" />
+=======
+    android:background="#FFF"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".SignUpActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="회원가입"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
     <EditText
         android:id="@+id/signupemail"
         android:layout_width="match_parent"
@@ -27,7 +47,10 @@
         android:inputType="textEmailAddress"
         android:textColor="#000"
         android:textColorHint="#B1A0A0"
+<<<<<<< HEAD
         android:layout_marginTop="30dp"
+=======
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:drawableStart="@drawable/ic_baseline_person_24"/>
 
     <EditText
@@ -92,8 +115,12 @@
 
     <Button
         android:id="@+id/Signupbutton"
+<<<<<<< HEAD
         android:layout_width="350dp"
         android:layout_gravity="center"
+=======
+        android:layout_width="match_parent"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="회원등록 하기"
@@ -101,8 +128,12 @@
 
     <Button
         android:id="@+id/cancelbutton"
+<<<<<<< HEAD
         android:layout_width="350dp"
         android:layout_gravity="center"
+=======
+        android:layout_width="match_parent"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@drawable/round"

@@ -113,7 +113,11 @@ class boardupdateActivity : AppCompatActivity() {
         time2 = t_dateFormat.format(t_date)
         time = t_dateFormat2.format(t_date)
 
+<<<<<<< HEAD
         setSupportActionBar(wbinding.nametoolbar)
+=======
+        setSupportActionBar(wbinding.toolbar)
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         supportActionBar?.setDisplayShowTitleEnabled(false)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
         getSupportActionBar()?.setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_ios_new_24)

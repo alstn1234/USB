@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+<<<<<<< HEAD
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFFFF"
     android:orientation="vertical"
@@ -18,6 +19,24 @@
         app:titleTextColor="@color/white"
         tools:ignore="MissingConstraints"
         />
+=======
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="20dp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="로그인"
+        android:textColor="#000"
+        android:textSize="30dp"
+        android:textStyle="bold"/>
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 
     <EditText
         android:id="@+id/editTextTextEmailAddress3"
@@ -30,7 +49,10 @@
         android:textColorHint="#B1A0A0"
         android:drawableStart="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
+<<<<<<< HEAD
         android:layout_marginTop="30dp"
+=======
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         />
 
     <EditText
@@ -47,6 +69,7 @@
 
         />
 
+<<<<<<< HEAD
     <CheckBox
         android:id="@+id/cb_save"
         android:layout_width="match_parent"
@@ -57,6 +80,12 @@
         android:id="@+id/loginbutton"
         android:layout_width="350dp"
         android:layout_gravity="center"
+=======
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="match_parent"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="입력"
@@ -65,9 +94,14 @@
 
     <Button
         android:id="@+id/movetomainbutton"
+<<<<<<< HEAD
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+=======
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:layout_marginTop="20dp"
         android:text="메인화면으로이동(개발편리용)"
         android:background="@drawable/round"

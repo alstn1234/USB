@@ -12,11 +12,19 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:background="@color/maincolor"
         android:layout_gravity="center"
         app:titleTextColor="@color/white"
         app:title="                               내 정보"
         tools:ignore="MissingConstraints" />
+=======
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:title="내 정보" />
+
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/profile_recycler"
         android:layout_width="match_parent"

@@ -27,7 +27,11 @@ class SNSSignupActivity : AppCompatActivity() {
         }
 
 
+<<<<<<< HEAD
         binding.SnsSignupbutton.setOnClickListener {
+=======
+        binding.snssignupbutton.setOnClickListener {
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 
             val database= FirebaseDatabase.getInstance()
             val myRef=database.getReference("SNSUsers")
@@ -41,7 +45,11 @@ class SNSSignupActivity : AppCompatActivity() {
             myRef.child(uid.toString()).push().setValue(dataInput)
         }
 
+<<<<<<< HEAD
         binding.SnsCancelbutton.setOnClickListener{
+=======
+        binding.snscancelbutton.setOnClickListener{
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }

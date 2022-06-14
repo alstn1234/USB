@@ -12,10 +12,15 @@
         android:id="@+id/nametoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="10dp"
         android:background="@color/maincolor"
         app:title="                              닉네임 변경"
         app:titleTextColor="@color/white"
+=======
+        android:background="#0091EA"
+        app:title="닉네임 변경"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         tools:ignore="MissingConstraints" />
 
     <LinearLayout
@@ -52,7 +57,11 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+<<<<<<< HEAD
         android:background="@drawable/round"
+=======
+        android:background="@drawable/roundedge"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         android:text="닉네임 설정"
         tools:ignore="OnClick" />
 

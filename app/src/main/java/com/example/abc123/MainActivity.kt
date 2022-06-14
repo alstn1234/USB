@@ -1,6 +1,7 @@
 package com.example.abc123
 
 import android.content.ContentValues
+<<<<<<< HEAD
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageInfo
@@ -8,6 +9,11 @@ import android.content.pm.PackageManager
 import android.graphics.Paint
 import android.os.Bundle
 import android.util.Base64
+=======
+import android.content.Intent
+import android.graphics.Paint
+import android.os.Bundle
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
@@ -25,9 +31,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FacebookAuthProvider
 import com.google.firebase.auth.FirebaseAuth
+<<<<<<< HEAD
 import com.google.firebase.auth.GoogleAuthProvider
 import java.security.MessageDigest
 
+=======
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 
 private var auth: FirebaseAuth? = null
 
@@ -37,7 +48,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     var callbackManager: CallbackManager? = null
+<<<<<<< HEAD
     private lateinit var binding: ActivityMainBinding
+=======
+    private lateinit var binding : ActivityMainBinding
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
     private val RC_SIGN_IN = 9001
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,16 +69,23 @@ class MainActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
+<<<<<<< HEAD
         getAppKeyHash()
 
 
 
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken("64403141523-gsc2p4drfuhh4ssbahee4bnjp1o4kg3c.apps.googleusercontent.com")
+=======
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken("859015759950-e87ubq6pph9tul5m0m46flh6dcsv0qug.apps.googleusercontent.com")
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             .requestEmail()
             .build()
 
         var googleSignInClient = GoogleSignIn.getClient(this, gso)
+<<<<<<< HEAD
 /* 자동로그인
        if (auth.getCurrentUser() != null) {
             val intent = Intent(application, HomeActivity::class.java)
@@ -73,6 +95,10 @@ class MainActivity : AppCompatActivity() {
 */
         binding.loginbutton.setOnClickListener {
 
+=======
+
+        binding.loginbutton.setOnClickListener {
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             if (email.text.toString().length == 0 || password.text.toString().length == 0) {
                 Toast.makeText(this, "이메일 혹은 비밀번호를 반드시 입력하세요.", Toast.LENGTH_SHORT).show()
             } else {
@@ -100,23 +126,41 @@ class MainActivity : AppCompatActivity() {
                     }
             }
 
+<<<<<<< HEAD
 
         }
 
         binding.MoveSignupbutton.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
+=======
+        }
+
+
+        binding.MoveSignupbutton.setOnClickListener {
+            val intent2 = Intent(this, SignUpActivity::class.java)
+            startActivity(intent2)
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         }
 
 
         binding.passwordreset.setOnClickListener {
+<<<<<<< HEAD
             val intent = Intent(this, PasswordResetActivity::class.java)
             startActivity(intent)
+=======
+            val intent4 = Intent(this, PasswordResetActivity::class.java)
+            startActivity(intent4)
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         }
 
         binding.GoogleSignUpButton.setOnClickListener {
             Log.e(ContentValues.TAG, "google")
+<<<<<<< HEAD
             val signIntent = googleSignInClient.signInIntent
+=======
+            val signIntent = googleSignInClient?.getSignInIntent()
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             startActivityForResult(signIntent, RC_SIGN_IN)
         }
 
@@ -125,11 +169,15 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.movetomainbutton.setOnClickListener {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }
+<<<<<<< HEAD
 
     }
 
@@ -171,6 +219,35 @@ class MainActivity : AppCompatActivity() {
     private fun facebookLogin() {
         LoginManager.getInstance()
             .logInWithReadPermissions(this, listOf("public_profile", "email"))
+=======
+    }
+
+
+    private  fun firebaseAuthWithGoogle(idToken: String)
+    {
+        val credential= GoogleAuthProvider.getCredential(idToken,null)
+
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this){task ->
+                if(task.isSuccessful) {
+                    Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
+                    val user = auth.currentUser
+                    val intent = Intent(this, SNSSignupActivity::class.java)
+                    intent.putExtra("uid",auth.currentUser?.uid)
+                    startActivity(intent)
+                    finish()
+
+                }else{
+                    Toast.makeText(this,task.exception?.message,Toast.LENGTH_SHORT).show()
+                    Log.d("xxxx","signInWithCredential:failure",task.exception)
+                }
+            }
+    }
+
+    private fun facebookLogin() {
+        LoginManager.getInstance()
+            .logInWithReadPermissions(this, listOf("public_profile","email"))
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
 
         LoginManager.getInstance()
             .registerCallback(callbackManager, object : FacebookCallback<LoginResult> {
@@ -187,6 +264,7 @@ class MainActivity : AppCompatActivity() {
             })
     }
 
+<<<<<<< HEAD
     fun handleFacebookAccessToken(token: AccessToken?) {
         var credential = FacebookAuthProvider.getCredential(token?.token!!)
 
@@ -201,6 +279,22 @@ class MainActivity : AppCompatActivity() {
                     finish()
                 } else {
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_SHORT).show()
+=======
+    fun handleFacebookAccessToken(token : AccessToken?){
+        var credential = FacebookAuthProvider.getCredential(token?.token!!)
+
+        auth?.signInWithCredential(credential)
+            ?.addOnCompleteListener{ task ->
+                if(task.isSuccessful){
+                    Toast.makeText(this,"로그인 성공",Toast.LENGTH_SHORT).show()
+                    val user = auth.currentUser
+                    val intent = Intent(this, SNSSignupActivity::class.java)
+                    intent.putExtra("uid",auth.currentUser?.uid)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    Toast.makeText(this,task.exception?.message,Toast.LENGTH_SHORT).show()
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
                 }
             }
 
@@ -209,15 +303,23 @@ class MainActivity : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
 
         super.onActivityResult(requestCode, resultCode, data)
+<<<<<<< HEAD
         callbackManager?.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+=======
+        callbackManager?.onActivityResult(requestCode,resultCode,data)
+
+        if(requestCode==RC_SIGN_IN){
+            val task=GoogleSignIn.getSignedInAccountFromIntent(data)
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
             try {
                 val account = task.getResult(ApiException::class.java)!!
                 Log.d(ContentValues.TAG, "firebaseAuthWithGoogle:" + account.id)
                 firebaseAuthWithGoogle(account.idToken!!)
 
+<<<<<<< HEAD
             } catch (e: ApiException) {
                 Log.w(ContentValues.TAG, "로그인에 실패 하였습니다.", e)
                 Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
@@ -226,3 +328,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+=======
+            }catch(e: ApiException){
+                Log.w(ContentValues.TAG, "로그인에 실패 하였습니다.", e)
+                Toast.makeText(this, "로그인 실패", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+}
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6

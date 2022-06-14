@@ -11,10 +11,15 @@
         android:id="@+id/nametoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+<<<<<<< HEAD
         android:layout_marginBottom="10dp"
         android:background="@color/maincolor"
         app:title="                              학과 설정"
         app:titleTextColor="@color/white"
+=======
+        android:background="#0091EA"
+        app:title="학과 설정"
+>>>>>>> 7d16a551fe09ae78110c88ca11c363485ecabea6
         tools:ignore="MissingConstraints" />
 
     <RadioGroup
