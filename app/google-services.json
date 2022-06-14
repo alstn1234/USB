@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "64403141523",
+    "firebase_url": "https://abc123-34300-default-rtdb.firebaseio.com",
     "project_id": "abc123-34300",
     "storage_bucket": "abc123-34300.appspot.com"
   },
@@ -14,11 +15,56 @@
       },
       "oauth_client": [
         {
+          "client_id": "64403141523-ct0e6ilrl65mm5bmef1olbg5a1eakgni.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.abc123",
+            "certificate_hash": "05b161e23e3b4c191271b04c40e1762055249c97"
+          }
+        },
+        {
           "client_id": "64403141523-sqt7aaeo3n49n89klqdjtf4bedk80vu5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.abc123",
             "certificate_hash": "91df1a3b05f5bb0306216b4594ed39150e73384b"
+          }
+        },
+        {
+          "client_id": "64403141523-gsc2p4drfuhh4ssbahee4bnjp1o4kg3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdyMSC0E6axjaeK7_bS9ijrKzz4yjUvJQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "64403141523-gsc2p4drfuhh4ssbahee4bnjp1o4kg3c.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:64403141523:android:ec05546e697e747578ee66",
+        "android_client_info": {
+          "package_name": "com.example.test28"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "64403141523-5i16ke8kmjq776l6ng7ka6lrcmro3efg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.test28",
+            "certificate_hash": "05b161e23e3b4c191271b04c40e1762055249c97"
           }
         },
         {

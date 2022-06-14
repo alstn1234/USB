@@ -1,13 +1,16 @@
 package com.example.abc123
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 
 class Reset_Profile : AppCompatActivity() {
     private val fireDatabase = FirebaseDatabase.getInstance().getReference()
+
     val user = Firebase.auth.currentUser?.uid
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

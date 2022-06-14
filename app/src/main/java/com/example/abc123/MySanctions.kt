@@ -22,7 +22,7 @@ class MySanctions : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        SanctionsList = ArrayList<Sanctionsmodel>()
+        SanctionsList = arrayListOf<Sanctionsmodel>()
         binding.SanctionsRecycler.layoutManager = LinearLayoutManager(this)
         val dbref = fireDatabase.getReference().child("User/$user/sanctions")
 

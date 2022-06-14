@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edge">
+
+        <ImageView
+            android:id="@+id/Profileimage"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/basicprofile" />
+
+        <TextView
+            android:id="@+id/nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/Profileimage"
+            android:text="닉네임"
+            android:textColor="@color/black" />
+        <TextView
+            android:id="@+id/contents"
+            android:layout_toRightOf="@id/Profileimage"
+            android:layout_below="@+id/nickname"
+            android:layout_marginLeft="15dp"
+            android:text="내용내용내용내용내용내용내용내용내용내용내용"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"/>
+        <TextView
+            android:id="@+id/dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/contents"
+            android:text="2022-05-01 23:55"/>
+
+        <ImageButton
+            android:id="@+id/commentmenu"
+            android:layout_marginTop="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@android:color/transparent"
+            android:src="@drawable/baseline_more_vert_24" />
+
+        <ImageButton
+            android:id="@+id/commentfavorite"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="3dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_favorite_border"
+            android:background="@android:color/transparent"
+            android:layout_toLeftOf="@id/commentmenu"/>
+
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:id="@+id/favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/dates"
+            android:layout_below="@+id/contents"
+            android:layout_marginTop="10dp"
+            android:textColor="#D50000"
+            android:text="좋아요 : 2"/>
+    </RelativeLayout>
+</LinearLayout>
