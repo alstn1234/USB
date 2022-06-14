@@ -26,6 +26,7 @@ class BuysellActivity : AppCompatActivity() {
     private lateinit var boardArraylist2: ArrayList<Board_Model3>
     var ppage_max: Int = 0
     var count = 0
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
     lateinit var mGlideRequestManager: RequestManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -110,6 +111,17 @@ class BuysellActivity : AppCompatActivity() {
                         if (i >= 0)
                             boardArraylist2.add(boardArrayList[i])
                     }
+                    fireDatabase.child("board").child("buysell_last_post").get()
+                        .addOnSuccessListener {
+                            val updates: MutableMap<String, Any> = HashMap()
+                            val key = it.value.toString()
+                            if (key == "") {
+                                updates["board/buysell_last_post"] = boardArrayList[0].key
+                                FirebaseDatabase.getInstance().getReference()
+                                    .updateChildren(updates)
+                            }
+                        }.addOnFailureListener {
+                        }
                     ppage_max = ppage_max - 10
                     boardRecyclerview.adapter =
                         MyAdapter3(
