@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/nametoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/maincolor"
+        app:title="                                로그인"
+        app:titleTextColor="@color/white"
+        tools:ignore="MissingConstraints"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="이메일"
+        android:inputType="textEmailAddress"
+        android:textColor="#000"
+        android:textColorHint="#B1A0A0"
+        android:drawableStart="@drawable/ic_baseline_person_24"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="30dp"
+        />
+
+    <EditText
+        android:id="@+id/editTextTextPassword3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="비밀번호"
+        android:inputType="textPassword"
+        android:textColor="#000"
+        android:textColorHint="#B1A0A0"
+        android:drawableStart="@drawable/ic_baseline_https_24"
+
+        />
+
+    <CheckBox
+        android:id="@+id/cb_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자동 로그인" />
+
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="입력"
+        android:background="@drawable/round"
+        />
+
+    <Button
+        android:id="@+id/movetomainbutton"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="메인화면으로이동(개발편리용)"
+        android:background="@drawable/round"
+        />
+
+
+    <TextView
+        android:id="@+id/MoveSignupbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="OnTextViewClicked"
+        android:clickable="true"
+        android:text="계정을 만들고싶어요"
+        android:textColor="#2E2E2E"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:layout_marginTop="20dp"
+        tools:ignore="OnClick" />
+
+    <TextView
+        android:id="@+id/passwordreset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="OnTextViewClicked"
+        android:clickable="true"
+        android:text="비밀번호가 기억이 안나요"
+        android:textColor="#2E2E2E"
+        android:layout_gravity="center"
+        android:textSize="17dp"
+        android:layout_marginTop="20dp"
+        tools:ignore="OnClick" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+
+        >
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/GoogleSignUpButton"
+            android:layout_width="230dp"
+            android:layout_height="34dp"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center" />
+
+
+        <ImageView
+            android:layout_width="389dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/img_1"
+            android:layout_gravity="center"/>
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        >
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/FacebookSignUpButton"
+            android:layout_width="253dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"/>
+
+        <ImageView
+            android:layout_width="385dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/img"
+            android:layout_gravity="center"/>
+    </FrameLayout>
+
+</LinearLayout>

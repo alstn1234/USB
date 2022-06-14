@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.abc123">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="28" />
+
+    <application
+        android:allowBackup="true"
+        android:appComponentFactory="whateverString"
+        android:icon="@mipmap/ic_launcher"
+        android:label="USB"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+        tools:replace="android:appComponentFactory"
+        tools:targetApi="p">
+        <activity
+            android:name=".buysellupdateActivity"
+            android:exported="false" />
+        <activity
+            android:name=".boardupdateActivity"
+            android:exported="false" />
+        <activity android:name=".SNSSignupActivity" />
+        <activity
+            android:name=".PasswordResetActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token" />
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name=".MessageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".buysellviewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WritingActivity3"
+            android:exported="false" />
+        <activity
+            android:name=".BuysellActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WritingActivity2"
+            android:exported="false" />
+        <activity
+            android:name=".BoardViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ImageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Set_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".Reset_Profile"
+            android:exported="false" />
+        <activity
+            android:name=".MyPost"
+            android:exported="false" />
+        <activity
+            android:name=".Set_Major"
+            android:exported="false" />
+        <activity
+            android:name=".Set_Name"
+            android:exported="false" />
+        <activity
+            android:name=".MySanctions"
+            android:exported="false" />
+        <activity
+            android:name=".SplashActivity"
+            android:theme="@style/SplashTheme"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".WritingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BoardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EndwordActivity"
+            android:exported="false" />
+
+    </application>
+
+</manifest>

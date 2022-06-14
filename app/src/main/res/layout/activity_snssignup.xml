@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFF"
+    android:orientation="vertical"
+    tools:context=".SNSSignupActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/nametoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:background="@color/maincolor"
+        app:title="                         SNS 회원가입"
+        app:titleTextColor="@color/white"
+        tools:ignore="MissingConstraints" />
+
+
+    <EditText
+        android:id="@+id/snssignupname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="이름을 입력하세요"
+        android:textColor="#000"
+        android:textColorHint="#B1A0A0"
+        android:privateImeOptions="defaultInputmode=korean"
+        />
+
+    <EditText
+        android:id="@+id/snssignupbirth"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="생년월일을 입력하세요"
+        android:textColor="#000"
+        android:textColorHint="#B1A0A0"
+        />
+
+    <EditText
+        android:id="@+id/snssignupnickname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="닉네임을 입력하세요"
+        android:textColor="#000"
+        android:textColorHint="#B1A0A0"
+        android:privateImeOptions="defaultInputmode=korean"
+        />
+
+    <Button
+        android:id="@+id/SnsSignupbutton"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="회원등록 하기"
+        android:background="@drawable/round"/>
+
+    <Button
+        android:id="@+id/SnsCancelbutton"
+        android:layout_width="350dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/round"
+        android:text="취소" />
+
+
+
+</LinearLayout>

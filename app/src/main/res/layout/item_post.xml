@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:background="#FFF"
+    android:orientation="vertical"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="20dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFF"
+        android:orientation="horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/postboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="[자유게시판]" />
+
+        <TextView
+            android:id="@+id/dates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="2022/04/19" />
+
+        <TextView
+            android:id="@+id/posttitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/postboard"
+            android:text="게시물 제목 : "
+            android:textColor="@color/black"></TextView>
+
+        <TextView
+            android:id="@+id/posttitletext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/posttitle"
+            android:layout_toRightOf="@id/posttitle"
+            android:text="제목"></TextView>
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">abc123</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="facebook_app_id">602226837991340</string>
+    <string name="fb_login_protocol_scheme">fb602226837991340</string>
+    <string name="facebook_client_token">471550fd9b3386c1f3754e0f8c810a1b</string>
+    <string name="firebase_web_client_id">64403141523-ct0e6ilrl65mm5bmef1olbg5a1eakgni.apps.googleusercontent.com</string>
+</resources>
