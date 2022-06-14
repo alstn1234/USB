@@ -14,17 +14,23 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.abc123.databinding.ActivityBoardViewBinding
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
+import java.util.HashMap
 
 class BoardViewActivity : AppCompatActivity() {
     lateinit var binding: ActivityBoardViewBinding
     lateinit var list: Board_Model2
     lateinit var board_title: String
+    private val fireDatabase = FirebaseDatabase.getInstance().reference
+    val user = Firebase.auth.currentUser?.uid.toString()
+    private lateinit var CommentList : ArrayList<Commentmodel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardViewBinding.inflate(layoutInflater)
@@ -33,7 +39,7 @@ class BoardViewActivity : AppCompatActivity() {
         progressDialog.setMessage("로딩중...")
         progressDialog.setCancelable(false)
         progressDialog.setProgressStyle(android.R.style.Widget_ProgressBar_Horizontal)
-
+        var uid = Firebase.auth.currentUser?.uid.toString()
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -56,11 +62,19 @@ class BoardViewActivity : AppCompatActivity() {
         if (list.image_count == 1) {
             imagesize_change(binding.image1)
             image_load(list.img1, binding.image1)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else if (list.image_count == 2) {
             imagesize_change(binding.image1)
             imagesize_change(binding.image2)
             image_load(list.img1, binding.image1)
             image_load(list.img2, binding.image2)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else if (list.image_count == 3) {
             imagesize_change(binding.image1)
             imagesize_change(binding.image2)
@@ -68,16 +82,28 @@ class BoardViewActivity : AppCompatActivity() {
             image_load(list.img1, binding.image1)
             image_load(list.img2, binding.image2)
             image_load(list.img3, binding.image3)
+            Handler(Looper.getMainLooper()).postDelayed({
+                if(progressDialog.isShowing)
+                    progressDialog.dismiss()
+            }, 2000)
         } else {
             if(progressDialog.isShowing)
             progressDialog.dismiss()
-            return
         }
 
-        Handler(Looper.getMainLooper()).postDelayed({
-            if(progressDialog.isShowing)
-            progressDialog.dismiss()
-        }, 2000)
+
+        //채팅으로 이동
+        binding.chat1.setOnClickListener {
+            Toast.makeText(this@BoardViewActivity,"본인이랑 채팅을 할 수 없습니다.",Toast.LENGTH_LONG).show()
+            if(list.name==uid){
+                Toast.makeText(this@BoardViewActivity,"본인이랑 채팅을 할 수 없습니다.",Toast.LENGTH_LONG).show()
+            }
+            else {
+                val intent = Intent(this, MessageActivity::class.java)
+                intent.putExtra("destinationUid", list.name)
+                startActivity(intent)
+            }
+        }
 
         binding.image1.setOnClickListener{
             if(list.image_count!!.toInt() == 1) {
@@ -105,6 +131,53 @@ class BoardViewActivity : AppCompatActivity() {
                 ContextCompat.startActivity(this, intent22, null)
             }
         }
+
+        binding.commentupload.setOnClickListener {
+            val contents = binding.commentcontents.text
+
+            if (contents.toString() == "") {
+                Toast.makeText(this, "댓글을 입력해주세요", Toast.LENGTH_LONG).show()
+            } else {
+                val currentTime : Long = System.currentTimeMillis()
+                var contents = contents.toString()
+                val dates = SimpleDateFormat("yyyy-MM-dd hh:mm")
+                val updates : MutableMap<String, Any> = HashMap()
+                fireDatabase.child("board").child(list.board_title).child(list.key).child("comment_count").get().addOnSuccessListener {
+                    val num = it.value.toString()
+                    fireDatabase.child("User/$user/profileImageUrl").get().addOnSuccessListener{
+                        fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/profileImageUrl").setValue(it.value.toString())
+                    }
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/uid").setValue(user)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/contents").setValue(contents)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/nickname").setValue(list.nickname)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/dates").setValue(dates.format(currentTime))
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/favorite").setValue(0)
+                }
+                Toast.makeText(this, "완료", Toast.LENGTH_SHORT).show()
+                updates["board/${list.board_title}/${list.key}/comment_count"] = ServerValue.increment(1)
+                fireDatabase.updateChildren(updates)
+            }
+        }
+
+
+        binding.comments.layoutManager = LinearLayoutManager(this)
+        fireDatabase.child("board").child(list.board_title).child(list.key)
+            .child("comment").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    CommentList = ArrayList<Commentmodel>()
+                    if (snapshot.exists()){
+                        CommentList.clear()
+                        for (data in snapshot.children) {
+                            val item = data.getValue(Commentmodel::class.java)
+                            CommentList.add(item!!)
+                        }
+                    }
+                    binding.comments.adapter = CommentAdapter(CommentList)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
 
     }
 
@@ -137,7 +210,15 @@ class BoardViewActivity : AppCompatActivity() {
                 return true
             }
             R.id.board_edit -> {
-                return super.onOptionsItemSelected(item)
+                val intent = Intent(this, boardupdateActivity::class.java)
+                if (list.name == Firebase.auth.currentUser?.uid) {
+                    intent.putExtra("data", list)
+                    intent.putExtra("title", board_title)
+                    finish()
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "권한이 없습니다.", Toast.LENGTH_LONG).show()
+                }
             }
             R.id.board_delete -> {
                 if (list.name == Firebase.auth.currentUser?.uid) {
@@ -149,6 +230,16 @@ class BoardViewActivity : AppCompatActivity() {
 
                     dlg.setPositiveButton("예", DialogInterface.OnClickListener { dialog, which ->
                         val key = list.key
+                        val updates : MutableMap<String, Any> = HashMap()
+                        fireDatabase.child("board").child(list.board_title + "_last_post").get()
+                            .addOnSuccessListener {
+                                val key2 = it.value.toString()
+                                if(key==key2){
+                                    updates["board/${list.board_title+"_last_post"}"] = ""
+                                    FirebaseDatabase.getInstance().getReference().updateChildren(updates)
+                                }
+                            }.addOnFailureListener{
+                            }
                         FirebaseDatabase.getInstance().getReference().child("board")
                             .child(list.board_title).child("$key").removeValue()
                         finish()
