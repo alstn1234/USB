@@ -2,6 +2,7 @@ package com.example.abc123
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.net.Uri
@@ -10,16 +11,20 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.view.MenuItem
+import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.abc123.databinding.ActivityBoardViewBinding
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
+import java.text.SimpleDateFormat
 import java.util.HashMap
 
 class BoardViewActivity : AppCompatActivity() {
@@ -27,6 +32,8 @@ class BoardViewActivity : AppCompatActivity() {
     lateinit var list: Board_Model2
     lateinit var board_title: String
     private val fireDatabase = FirebaseDatabase.getInstance().reference
+    private lateinit var CommentList : ArrayList<Commentmodel>
+    val user = Firebase.auth.currentUser?.uid.toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardViewBinding.inflate(layoutInflater)
@@ -133,6 +140,57 @@ class BoardViewActivity : AppCompatActivity() {
             }
         }
 
+        binding.commentupload.setOnClickListener {
+            val commentcontents = binding.commentcontents.text
+
+            if (commentcontents.toString() == "") {
+                Toast.makeText(this, "댓글을 입력해주세요", Toast.LENGTH_LONG).show()
+            } else {
+                val currentTime : Long = System.currentTimeMillis()
+                var contents = commentcontents.toString()
+                val dates = SimpleDateFormat("yyyy-MM-dd hh:mm")
+                val updates : MutableMap<String, Any> = HashMap()
+                fireDatabase.child("board").child(list.board_title).child(list.key).child("comment_count").get().addOnSuccessListener {
+                    val num = it.value.toString()
+                    fireDatabase.child("User/$user/profileImageUrl").get().addOnSuccessListener{
+                        fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/profileImageUrl").setValue(it.value.toString())
+                    }
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/uid").setValue(user)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/contents").setValue(contents)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/nickname").setValue(list.nickname)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/dates").setValue(dates.format(currentTime))
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/favorite").setValue(0)
+
+                    commentcontents.clear()
+                    CloseKeyboard()
+                }
+                Toast.makeText(this, "완료", Toast.LENGTH_SHORT).show()
+
+                updates["board/${list.board_title}/${list.key}/comment_count"] = ServerValue.increment(1)
+                fireDatabase.updateChildren(updates)
+            }
+        }
+
+
+        binding.comments.layoutManager = LinearLayoutManager(this)
+        fireDatabase.child("board").child(list.board_title).child(list.key)
+            .child("comment").addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    CommentList = ArrayList<Commentmodel>()
+                    if (snapshot.exists()){
+                        CommentList.clear()
+                        for (data in snapshot.children) {
+                            val item = data.getValue(Commentmodel::class.java)
+                            CommentList.add(item!!)
+                        }
+                    }
+                    binding.comments.adapter = CommentAdapter(CommentList,this@BoardViewActivity)
+                }
+                override fun onCancelled(error: DatabaseError) {
+                }
+            })
+
+
 
 
     }
@@ -213,4 +271,15 @@ class BoardViewActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    // 키보드 숨기기
+    fun CloseKeyboard()
+    {
+        var view = this.currentFocus
+
+        if(view != null)
+        {
+            val inputMethodManager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
 }
