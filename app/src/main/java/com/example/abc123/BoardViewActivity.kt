@@ -184,7 +184,7 @@ class BoardViewActivity : AppCompatActivity() {
                             CommentList.add(item!!)
                         }
                     }
-                    binding.comments.adapter = CommentAdapter(CommentList,this@BoardViewActivity)
+                    binding.comments.adapter = CommentAdapter(CommentList,this@BoardViewActivity,list.board_title,list.key)
                 }
                 override fun onCancelled(error: DatabaseError) {
                 }

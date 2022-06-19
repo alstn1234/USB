@@ -4,10 +4,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.abc123.databinding.ActivityMypostBinding
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class MyPost : AppCompatActivity() {
     private var fireDatabase = FirebaseDatabase.getInstance()
@@ -18,10 +20,10 @@ class MyPost : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMypostBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         MypostList = ArrayList<Mypostmodel>()
         binding.MypostRecycler.layoutManager = LinearLayoutManager(this)
-        val dbref = fireDatabase.getReference().child("MyEX/UserExample/mypost")
+        val user = Firebase.auth.currentUser?.uid.toString()
+        val dbref = fireDatabase.getReference().child("")
 
         dbref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
