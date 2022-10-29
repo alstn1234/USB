@@ -20,6 +20,12 @@
         tools:replace="android:appComponentFactory"
         tools:targetApi="p">
         <activity
+            android:name=".Commentmodel"
+            android:exported="false" />
+        <activity
+            android:name=".CommentAdapter"
+            android:exported="false" />
+        <activity
             android:name=".buysellupdateActivity"
             android:exported="false" />
         <activity
@@ -32,11 +38,9 @@
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
 
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
@@ -89,8 +93,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -109,7 +113,6 @@
         <activity
             android:name=".EndwordActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>
