@@ -72,9 +72,10 @@ class MainActivity : AppCompatActivity() {
         }
 */
         binding.loginbutton.setOnClickListener {
-
+            binding.loginbutton.isEnabled = false;
             if (email.text.toString().length == 0 || password.text.toString().length == 0) {
                 Toast.makeText(this, "이메일 혹은 비밀번호를 반드시 입력하세요.", Toast.LENGTH_SHORT).show()
+                binding.loginbutton.isEnabled = true;
             } else {
                 auth.signInWithEmailAndPassword(email.text.toString(), password.text.toString())
                     .addOnCompleteListener(this) { task ->
@@ -85,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                             val user = auth.currentUser
 
                             val intent = Intent(this, HomeActivity::class.java)
+                            binding.loginbutton.isEnabled = true;
                             startActivity(intent)
                             finish()
 
@@ -96,6 +98,7 @@ class MainActivity : AppCompatActivity() {
                                 "이메일 혹은 비밀번호를 다시 확인해주세요.",
                                 Toast.LENGTH_SHORT
                             ).show()
+                            binding.loginbutton.isEnabled = true;
                         }
                     }
             }
