@@ -86,6 +86,7 @@ class MainActivity : AppCompatActivity() {
                             val user = auth.currentUser
 
                             val intent = Intent(this, HomeActivity::class.java)
+                            binding.loginbutton.isEnabled = true;
                             startActivity(intent)
                             binding.loginbutton.isEnabled = true;
                             finish()

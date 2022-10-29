@@ -95,7 +95,6 @@ class CommentAdapter(private val CommentList: ArrayList<Commentmodel>,var contex
         val favorite: TextView = itemView.findViewById(R.id.favorite)
         val commentfavorite: ImageButton = itemView.findViewById(R.id.commentfavorite)
         val commentmenu: ImageButton = itemView.findViewById(R.id.commentmenu)
-        val editcomment: EditText = itemView.findViewById(R.id.commentcontents)
     }
 
 }
