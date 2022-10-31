@@ -52,7 +52,7 @@ class MypageFragment : Fragment() {
                 }
             })
         val Mypage_post1 = arrayOf("프로필 변경", "학과 설정", "닉네임 변경")
-        val Mypage_post2 = arrayOf("내가 쓴 글", "내 댓글", "제재 내역", "로그아웃")
+        val Mypage_post2 = arrayOf("제재 내역", "로그아웃")
         // 마이페이지 계정탭 기본 어댑터
         mybinding.Mypagepost1lview.adapter =
             ArrayAdapter(requireActivity()!!, android.R.layout.simple_list_item_1, Mypage_post1)
