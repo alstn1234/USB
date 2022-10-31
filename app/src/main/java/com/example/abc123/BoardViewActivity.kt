@@ -34,6 +34,7 @@ class BoardViewActivity : AppCompatActivity() {
     private val fireDatabase = FirebaseDatabase.getInstance().reference
     private lateinit var CommentList : ArrayList<Commentmodel>
     val user = Firebase.auth.currentUser?.uid.toString()
+    var nick = "";
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityBoardViewBinding.inflate(layoutInflater)
@@ -53,6 +54,12 @@ class BoardViewActivity : AppCompatActivity() {
         board_title = intent.getStringExtra("title").toString()
         list = intent.getSerializableExtra("data") as Board_Model2
         binding.toolbar.title = board_title
+
+        fireDatabase.child("User").child(user.toString()).child("nickname").get()
+            .addOnSuccessListener {
+                nick = it.value.toString()
+            }.addOnFailureListener{
+            }
 
         fireDatabase.child("User").child(list.name).child("profileImageUrl").get()
             .addOnSuccessListener {
@@ -157,7 +164,7 @@ class BoardViewActivity : AppCompatActivity() {
                     }
                     fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/uid").setValue(user)
                     fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/contents").setValue(contents)
-                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/nickname").setValue(list.nickname)
+                    fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/nickname").setValue(nick)
                     fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/dates").setValue(dates.format(currentTime))
                     fireDatabase.child("board").child(list.board_title).child(list.key).child("comment").child("$num/favorite").setValue(0)
 
