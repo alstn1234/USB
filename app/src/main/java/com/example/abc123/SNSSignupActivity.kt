@@ -4,9 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.abc123.databinding.ActivitySnssignupBinding
+import com.example.test28.DataModel
 import com.example.test28.SNSDataModel
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+
+private lateinit var database: DatabaseReference
 
 class SNSSignupActivity : AppCompatActivity() {
 
@@ -29,16 +35,23 @@ class SNSSignupActivity : AppCompatActivity() {
 
         binding.SnsSignupbutton.setOnClickListener {
 
-            val database= FirebaseDatabase.getInstance()
-            val myRef=database.getReference("SNSUsers")
+            database= Firebase.database.reference
 
-            val dataInput= SNSDataModel(
+            var uid:String=auth.currentUser?.uid.toString()
+            val dataInput= DataModel(
                 binding.snssignupname.text.toString(),
                 binding.snssignupbirth.text.toString(),
-                binding.snssignupnickname.text.toString()
+                binding.snssignupnickname.text.toString(),
+                uid
             )
-            var uid:String=auth.currentUser?.uid.toString()
-            myRef.child(uid.toString()).push().setValue(dataInput)
+
+            database.child("User").child(uid).setValue(dataInput)
+            database.child("User").child(uid).child("profileImageUrl").setValue("https://firebasestorage.googleapis.com/v0/b/abc123-34300.appspot.com/o/profile%2Fbasicprofile.png?alt=media&token=bdd5a488-aa8d-4bbd-b17f-49e51af4af12")
+            database.child("User").child(uid).child("major").setValue("")
+            database.child("User").child(uid).child("school").setValue("")
+
+            val intent = Intent(this, HomeActivity::class.java)
+            startActivity(intent)
         }
 
         binding.SnsCancelbutton.setOnClickListener{

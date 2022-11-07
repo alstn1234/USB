@@ -14,6 +14,7 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContentProviderCompat.requireContext
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.common.primitives.UnsignedBytes.toInt
@@ -83,6 +84,11 @@ class CommentAdapter(private val CommentList: ArrayList<Commentmodel>,var contex
             holder.commentmenu.setOnClickListener{
                 builder.setItems(select_other) { DialogInterface, which ->
                     when(which){
+                        0 -> {
+                                val intent = Intent(context, MessageActivity::class.java)
+                                intent.putExtra("destinationUid", uid)
+                                context?.startActivity(intent)
+                        }
                         1 -> {
                             val builder1 = AlertDialog.Builder(context)
 
