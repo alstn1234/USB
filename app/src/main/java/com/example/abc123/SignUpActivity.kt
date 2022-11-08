@@ -66,6 +66,8 @@ class SignUpActivity : AppCompatActivity() {
                                     database.child("User").child(uid).child("profileImageUrl").setValue("https://firebasestorage.googleapis.com/v0/b/abc123-34300.appspot.com/o/profile%2Fbasicprofile.png?alt=media&token=bdd5a488-aa8d-4bbd-b17f-49e51af4af12")
                                     database.child("User").child(uid).child("major").setValue("")
                                     database.child("User").child(uid).child("school").setValue("")
+                                    database.child("User").child(uid).child("nickname").setValue(binding.signupnickname.text.toString())
+                                    database.child("User").child(uid).child("birth").setValue(binding.signupbirth.text.toString())
                                     val intent = Intent(this, MainActivity::class.java)
                                     startActivity(intent)
 
@@ -108,4 +110,3 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 }
-
